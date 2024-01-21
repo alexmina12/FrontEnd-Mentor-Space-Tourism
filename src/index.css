@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.h1 {
+  font-size: 150px;
+  font-family: "Bellefair Regular", sans-serif;
+}
+
+.h2 {
+  font-size: 100px;
+  font-family: "Bellefair Regular", sans-serif;
+}
+
+.h3 {
+  font-size: 56px;
+  font-family: "Bellefair Regular", sans-serif;
+}
+
+.h4 {
+  font-size: 32px;
+  font-family: "Bellefair Regular", sans-serif;
+}
+
+.h5 {
+  font-size: 28px;
+  font-family: "Barlow Condensed Regular", sans-serif;
+  letter-spacing: 4.75px;
+}
+
+.sh1 {
+  font-size: 28px;
+  font-family: "Bellefair Regular", sans-serif;
+}
+
+.sh2 {
+  font-size: 14px;
+  font-family: "Barlow Condensed Regular", sans-serif;
+  letter-spacing: 2.35px;
+}
+
+.nav {
+  font-size: 16px;
+  font-family: "Barlow Condensed Regular", sans-serif;
+  letter-spacing: 2.7px;
+}
+
+.body-text {
+  font-size: 18px;
+  font-family: "Barlow Regular", sans-serif;
+}
+
+a:hover {
+  cursor: pointer;
+}
