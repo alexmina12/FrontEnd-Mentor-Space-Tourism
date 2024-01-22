@@ -1,4 +1,4 @@
-import Space from "./components/SpaceTurism";
+import Space from "./components/spaceTurism";
 
 function App() {
   return (

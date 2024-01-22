@@ -7,14 +7,15 @@ export default {
         primary: "#0B0D17",
         secondary: "#d0d6f9",
         tertiary: "#ffffff",
+        half_white: "rgba(255, 255, 255, 0.5)",
       },
       backgroundImage: {
-        "home-desktop": "url('./src/assets/home/background-home-desktop.jpg')",
+        "home-desktop": "url('./assets/home/background-home-desktop.jpg')",
         "destination-desktop":
-          "url('./src/assets/destination/background-destination-desktop.jpg')",
-        "crew-desktop": "url('./src/assets/crew/background-crew-desktop.jpg')",
+          "url('./assets/destination/background-destination-desktop.jpg')",
+        "crew-desktop": "url('./assets/crew/background-crew-desktop.jpg')",
         "technology-desktop":
-          "url('./src/assets/technology/background-technology-desktop.jpg')",
+          "url('./assets/technology/background-technology-desktop.jpg')",
       },
       // fontFamily: {
       //   belle: ["Bellefair Regular", "serif"],
