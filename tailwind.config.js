@@ -8,6 +8,7 @@ export default {
         secondary: "#d0d6f9",
         tertiary: "#ffffff",
         half_white: "rgba(255, 255, 255, 0.5)",
+        shadow_white: "rgba(255,255,255, 0.1)",
       },
       backgroundImage: {
         "home-desktop": "url('./assets/home/background-home-desktop.jpg')",
@@ -17,17 +18,6 @@ export default {
         "technology-desktop":
           "url('./assets/technology/background-technology-desktop.jpg')",
       },
-      // fontFamily: {
-      //   belle: ["Bellefair Regular", "serif"],
-      //   barl: ["Barlow Condensed Regular", "serif"],
-      // },
-      // fontSize: {
-      //   h1: "150px",
-      //   h2: "100px",
-      //   h3: "56px",
-      //   h4: "32px",
-      //   h5: "28px",
-      // },
     },
   },
   plugins: [],

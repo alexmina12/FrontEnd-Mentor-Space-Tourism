@@ -53,3 +53,25 @@
 a:hover {
   cursor: pointer;
 }
+
+.planet {
+  width: 445px;
+  height: 445px;
+  margin: auto;
+  animation: slide 6s;
+}
+
+.slide {
+  animation: slide 6s;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translate(-500px, -100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

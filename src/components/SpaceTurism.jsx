@@ -104,8 +104,8 @@ function Space() {
                 </p>
               </div>
               <div className="mx-auto mt-[38%] mr-[25%]">
-                <button className="w-[274px] text-center h-[274px] font-[Bellefair] text-[32px] tracking-[2px] bg-tertiary rounded-full ">
-                  <p className="m-auto">EXPLORE</p>
+                <button className="w-[274px] text-center h-[274px] font-[Bellefair] text-[32px] tracking-[2px] bg-tertiary rounded-full transition-all duration-[1500ms] hover:ring-[75px] hover:ring-opacity-50 hover:ring-shadow_white">
+                  <p className="m-auto ">EXPLORE</p>
                 </button>
               </div>
             </div>
@@ -113,40 +113,28 @@ function Space() {
         )}{" "}
         {option === "DESTINATION" && (
           <>
-            <div className="grid grid-cols-2">
-              <div>
-                <p className="sh1 ">01 PICK YOUR DESTINATION</p>
+            <div className="grid grid-cols-2 w-[100vw]">
+              <div className="flex flex-col mt-[-100px] ml-[10%] ">
+                <p className="sh1 ml-[20%] text-secondary">
+                  <span className="opacity-25 font-bold h5">01</span> PICK YOUR
+                  DESTINATION
+                </p>
                 {planet === "MOON" && (
-                  <img
-                    src={moon}
-                    className="w-[445px] h-[445px]"
-                    alt="Moon"
-                  ></img>
+                  <img src={moon} className="planet" alt="Moon"></img>
                 )}
                 {planet === "MARS" && (
-                  <img
-                    src={mars}
-                    className="w-[445px] h-[445px]"
-                    alt="Mars"
-                  ></img>
+                  <img src={mars} className="planet" alt="Mars"></img>
                 )}
+
                 {planet === "EUROPA" && (
-                  <img
-                    src={europa}
-                    className="w-[445px] h-[445px]"
-                    alt="Mars"
-                  ></img>
+                  <img src={europa} className="planet" alt="Mars"></img>
                 )}
                 {planet === "TITAN" && (
-                  <img
-                    src={titan}
-                    className="w-[445px] h-[445px]"
-                    alt="Mars"
-                  ></img>
+                  <img src={titan} className="planet" alt="Mars"></img>
                 )}
               </div>
-              <div>
-                <nav className="flex justify-between w-[40vw] nav text-tertiary">
+              <div className="ml-[15%]">
+                <nav className="flex justify-between w-[20vw] nav text-tertiary ">
                   <a onClick={() => handlePlanet("MOON")}>MOON</a>
                   <a onClick={() => handlePlanet("MARS")}>MARS</a>
                   <a onClick={() => handlePlanet("EUROPA")}>EUROPA</a>
@@ -154,68 +142,72 @@ function Space() {
                 </nav>
                 {planet === "MOON" && (
                   <>
-                    <h2 className="h2 text-tertiary">MOON</h2>
-                    <p className="body-text text-indigo-200">
+                    <h2 className="h2 text-tertiary ml-4">MOON</h2>
+                    <p className="body-text text-indigo-200 w-[450px] h-auto">
                       See our planet as you’ve never seen it before. A perfect
                       relaxing trip away to help regain perspective and come
                       back refreshed. While you’re there, take in some history
                       by visiting the Luna 2 and Apollo 11 landing sites.
                     </p>
-                    <div>
+                    <div className="w-[445px] h-[1px] bg-[#383B4B] mt-20 mb-10"></div>
+                    <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
                       <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
-                      <p className="sh1 text-tertiary">384,400 KM</p>
                       <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                      <p className="sh1 text-tertiary">384,400 KM</p>
                       <p className="sh1 text-tertiary">3 DAYS</p>
                     </div>
                   </>
                 )}
                 {planet === "MARS" && (
                   <>
-                    <h2 className="h2 text-tertiary">MARS</h2>
-                    <p className="body-text text-indigo-200">
+                    <h2 className="h2 text-tertiary ml-4">MARS</h2>
+                    <p className="body-text text-indigo-200 w-[450px] h-auto">
                       Don’t forget to pack your hiking boots. You’ll need them
                       to tackle Olympus Mons, the tallest planetary mountain in
                       our solar system. It’s two and a half times the size of
                       Everest!
                     </p>
-                    <div>
+                    <div className="w-[445px] h-[1px] bg-[#383B4B] mt-20 mb-10"></div>
+                    <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
                       <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
-                      <p className="sh1 text-tertiary">225 MIL. KM</p>
                       <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                      <p className="sh1 text-tertiary">225 MIL. KM</p>
                       <p className="sh1 text-tertiary">9 MONTHS</p>
                     </div>
                   </>
                 )}
                 {planet === "EUROPA" && (
                   <>
-                    <h2 className="h2 text-tertiary">EUROPA</h2>
-                    <p className="body-text text-indigo-200">
+                    <h2 className="h2 text-tertiary ml-4">EUROPA</h2>
+                    <p className="body-text text-indigo-200 w-[450px] h-auto">
                       The smallest of the four Galilean moons orbiting Jupiter,
                       Europa is a winter lover’s dream. With an icy surface,
                       it’s perfect for a bit of ice skating, curling, hockey, or
                       simple relaxation in your snug wintery cabin.
                     </p>
-                    <div>
+                    <div className="w-[445px] h-[1px] bg-[#383B4B] mt-20 mb-10"></div>
+                    <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
                       <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
-                      <p className="sh1 text-tertiary">628 MIL. KM</p>
                       <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                      <p className="sh1 text-tertiary">628 MIL. KM</p>
                       <p className="sh1 text-tertiary">3 YEARS</p>
                     </div>
                   </>
                 )}
                 {planet === "TITAN" && (
                   <>
-                    <h2 className="h2 text-tertiary">TITAN</h2>
-                    <p className="body-text text-indigo-200">
+                    <h2 className="h2 text-tertiary ">TITAN</h2>
+                    <p className="body-text text-indigo-200 w-[450px] h-auto">
                       The only moon known to have a dense atmosphere other than
                       Earth, Titan is a home away from home (just a few hundred
                       degrees colder!). As a bonus, you get striking views of
                       the Rings of Saturn.{" "}
                     </p>
-                    <div>
+                    <div className="w-[445px] h-[1px] bg-[#383B4B] mt-20 mb-10"></div>
+                    <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
                       <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
-                      <p className="sh1 text-tertiary">1.6 BIL. KM</p>
                       <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                      <p className="sh1 text-tertiary">1.6 BIL. KM</p>
                       <p className="sh1 text-tertiary">7 YEARS</p>
                     </div>
                   </>
