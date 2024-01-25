@@ -61,6 +61,10 @@ a:hover {
   animation: slide 6s;
 }
 
+.closed {
+  display: none;
+}
+
 .slide {
   animation: slide 6s;
 }

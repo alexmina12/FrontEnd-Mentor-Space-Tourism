@@ -17,6 +17,11 @@ export default {
         "crew-desktop": "url('./assets/crew/background-crew-desktop.jpg')",
         "technology-desktop":
           "url('./assets/technology/background-technology-desktop.jpg')",
+        "home-mobile": "url('./assets/home/background-home-mobile.jpg')",
+      },
+      screens: {
+        mobile: { max: "767px" },
+        lg: "1024px",
       },
     },
   },
