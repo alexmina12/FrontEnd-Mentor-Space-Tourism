@@ -76,57 +76,63 @@ function Space() {
             {showMenu && nav ? (
               <img
                 src={open}
-                className="h-[24px] my-auto "
+                className="h-[24px] my-auto mobile:absolute mobile:top-9 mobile:right-14"
                 onClick={handleNav}
               />
             ) : !nav ? (
               <>
-                <div>
+                <div className="test">
                   <img
                     src={close}
-                    className="h-[24px] my-auto ml-[20px]"
+                    className="h-[24px] my-auto mobile:absolute mobile:top-9 mobile:right-14 mobile:z-10"
                     onClick={handleNav}
                   />
                   <nav
-                    className={`text-tertiary flex justify-evenly h-full ${
-                      nav === true ? "" : "bg-red-200"
+                    className={`text-tertiary flex lg:justify-evenly h-full  ${
+                      nav === true
+                        ? ""
+                        : "mobile:absolute mobile:right-0 gap-[32px] nav mobile:w-[280px] h-full bg-tertiary bg-opacity-5 backdrop-blur-[81.55px] mobile:flex-col"
                     }`}
                   >
                     <a
                       onClick={() => handleOptionClick("HOME")}
-                      className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
-                        option === "HOME" ? "border-b-4 border-b-tertiary" : ""
+                      className={`lg:h-full lg:hover:border-b-4 lg:hover:border-b-half_white flex items-center mobile:mt-52 ${
+                        option === "HOME"
+                          ? "lg:border-b-4 border-b-tertiary"
+                          : ""
                       }`}
                     >
-                      00 HOME
+                      <span className="mobile:font-bold">00</span> HOME
                     </a>
                     <a
                       onClick={() => handleOptionClick("DESTINATION")}
-                      className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
+                      className={`lg:h-full lg:hover:border-b-4 lg:hover:border-b-half_white flex items-center ${
                         option === "DESTINATION"
-                          ? "border-b-4 border-b-tertiary "
+                          ? "lg:border-b-4 lg:border-b-tertiary "
                           : ""
                       }`}
                     >
-                      <p>01 DESTINATION</p>
+                      <span className="mobile:font-bold">01</span> DESTINATION
                     </a>
                     <a
                       onClick={() => handleOptionClick("CREW")}
-                      className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
-                        option === "CREW" ? "border-b-4 border-b-tertiary" : ""
-                      }`}
-                    >
-                      02 CREW
-                    </a>
-                    <a
-                      onClick={() => handleOptionClick("TECHNOLOGY")}
-                      className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
-                        option === "TECHNOLOGY"
-                          ? "border-b-4 border-b-tertiary "
+                      className={`lg:h-full lg:hover:border-b-4 lg:hover:border-b-half_white flex items-center ${
+                        option === "CREW"
+                          ? "lg:border-b-4 lg:border-b-tertiary"
                           : ""
                       }`}
                     >
-                      03 TECHNOLOGY
+                      <span className="mobile:font-bold">02</span> CREW
+                    </a>
+                    <a
+                      onClick={() => handleOptionClick("TECHNOLOGY")}
+                      className={`lg:h-full lg:lg:hover:border-b-4 lg:lg:hover:border-b-half_white flex items-center ${
+                        option === "TECHNOLOGY"
+                          ? "lg:border-b-4 lg:border-b-tertiary "
+                          : ""
+                      }`}
+                    >
+                      <span className="mobile:font-bold">03</span> TECHNOLOGY
                     </a>
                   </nav>
                 </div>
@@ -213,28 +219,66 @@ function Space() {
         )}{" "}
         {option === "DESTINATION" && (
           <>
-            <div className="grid grid-cols-2 w-[100vw]">
-              <div className="flex flex-col mt-[-100px] ml-[10%] ">
-                <p className="sh1 ml-[20%] text-secondary">
-                  <span className="opacity-25 font-bold h5">01</span> PICK YOUR
-                  DESTINATION
+            <div className="grid lg:grid-cols-2 w-[100vw]">
+              <div className="flex flex-col lg:mt-[-100px] mobile:mt-[-260px] lg:ml-[10%] mobile:mx-auto">
+                <p
+                  className={`sh1 lg:ml-[20%] text-secondary mobile:w-[300px] ${
+                    showMenu ? "nav" : "sh1"
+                  }`}
+                >
+                  <span
+                    className={`planet ${
+                      showMenu ? "w-[170px] h-[170px]" : "w-[445px] h-[445px]"
+                    }`}
+                  >
+                    01
+                  </span>{" "}
+                  PICK YOUR DESTINATION
                 </p>
                 {planet === "MOON" && (
-                  <img src={moon} className="planet" alt="Moon"></img>
+                  <img
+                    src={moon}
+                    className={`planet ${
+                      showMenu ? "w-[170px] h-[170px]" : "w-[445px] h-[445px]"
+                    }`}
+                    alt="Moon"
+                  ></img>
                 )}
                 {planet === "MARS" && (
-                  <img src={mars} className="planet" alt="Mars"></img>
+                  <img
+                    src={mars}
+                    className={`planet  ${
+                      showMenu ? "w-[170px] h-[170px]" : "w-[445px] h-[445px]"
+                    }`}
+                    alt="Mars"
+                  ></img>
                 )}
 
                 {planet === "EUROPA" && (
-                  <img src={europa} className="planet" alt="Mars"></img>
+                  <img
+                    src={europa}
+                    className={`planet ${
+                      showMenu ? "w-[170px] h-[170px]" : "w-[445px] h-[445px]"
+                    }`}
+                    alt="Mars"
+                  ></img>
                 )}
                 {planet === "TITAN" && (
-                  <img src={titan} className="planet" alt="Mars"></img>
+                  <img
+                    src={titan}
+                    className={`planet ${
+                      showMenu ? "w-[170px] h-[170px]" : "w-[445px] h-[445px]"
+                    }`}
+                    alt="Mars"
+                  ></img>
                 )}
               </div>
-              <div className="ml-[15%]">
-                <nav className="flex justify-between w-[20vw] nav text-tertiary ">
+              <div className="lg:ml-[15%]">
+                <nav
+                  className={`flex lg:justify-between mobile:justify-evenly lg:w-[20vw] text-tertiary mobile:mt-[-150px] ${
+                    showMenu ? "sh2" : "nav"
+                  }`}
+                >
                   <a onClick={() => handlePlanet("MOON")}>MOON</a>
                   <a onClick={() => handlePlanet("MARS")}>MARS</a>
                   <a onClick={() => handlePlanet("EUROPA")}>EUROPA</a>
@@ -242,74 +286,160 @@ function Space() {
                 </nav>
                 {planet === "MOON" && (
                   <>
-                    <h2 className="h2 text-tertiary ml-4">MOON</h2>
-                    <p className="body-text text-indigo-200 w-[450px] h-auto">
+                    <h2
+                      className={`text-tertiary lg:ml-4 mobile:text-center ${
+                        showMenu ? "h3" : "h2"
+                      }`}
+                    >
+                      MOON
+                    </h2>
+                    <p
+                      className={`${
+                        showMenu ? "text-[15px] leading-[25px]" : "body-text"
+                      } text-indigo-200 lg:w-[450px] mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto `}
+                    >
                       See our planet as you’ve never seen it before. A perfect
                       relaxing trip away to help regain perspective and come
                       back refreshed. While you’re there, take in some history
                       by visiting the Luna 2 and Apollo 11 landing sites.
                     </p>
-                    <div className="w-[445px] h-[1px] bg-[#383B4B] mt-20 mb-10"></div>
-                    <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
-                      <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
-                      <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
-                      <p className="sh1 text-tertiary">384,400 KM</p>
-                      <p className="sh1 text-tertiary">3 DAYS</p>
-                    </div>
+                    <div className="lg:w-[445px] mobile:w-[327px] mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
+                    {!showMenu ? (
+                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
+                        <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
+                        <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                        <p className="sh1 text-tertiary">225 MIL. KM</p>
+                        <p className="sh1 text-tertiary">9 MONTHS</p>
+                      </div>
+                    ) : (
+                      <div className="h-[40px] w-fit mx-auto">
+                        <p className="sh2 text-indigo-200 mb-2">
+                          AVG. DISTANCE
+                        </p>
+                        <p className="sh1 text-tertiary mb-6">225 MIL. KM</p>
+                        <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                        <p className="sh1 text-tertiary">9 MONTHS</p>
+                      </div>
+                    )}
                   </>
                 )}
                 {planet === "MARS" && (
                   <>
-                    <h2 className="h2 text-tertiary ml-4">MARS</h2>
-                    <p className="body-text text-indigo-200 w-[450px] h-auto">
+                    <h2
+                      className={`text-tertiary lg:ml-4 mobile:text-center ${
+                        showMenu ? "h3" : "h2"
+                      }`}
+                    >
+                      MARS
+                    </h2>
+                    <p
+                      className={`${
+                        showMenu ? "text-[15px] leading-[25px]" : "body-text"
+                      } text-indigo-200 lg:w-[450px] mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto mobile:h-[125px]`}
+                    >
                       Don’t forget to pack your hiking boots. You’ll need them
                       to tackle Olympus Mons, the tallest planetary mountain in
                       our solar system. It’s two and a half times the size of
                       Everest!
                     </p>
-                    <div className="w-[445px] h-[1px] bg-[#383B4B] mt-20 mb-10"></div>
-                    <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
-                      <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
-                      <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
-                      <p className="sh1 text-tertiary">225 MIL. KM</p>
-                      <p className="sh1 text-tertiary">9 MONTHS</p>
-                    </div>
+                    <div className="lg:w-[445px] mobile:w-[327px] mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
+                    {!showMenu ? (
+                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
+                        <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
+                        <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                        <p className="sh1 text-tertiary">225 MIL. KM</p>
+                        <p className="sh1 text-tertiary">9 MONTHS</p>
+                      </div>
+                    ) : (
+                      <div className="h-[40px] w-fit mx-auto ">
+                        <p className="sh2 text-indigo-200 mb-2">
+                          AVG. DISTANCE
+                        </p>
+                        <p className="sh1 text-tertiary mb-6">225 MIL. KM</p>
+                        <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                        <p className="sh1 text-tertiary">9 MONTHS</p>
+                      </div>
+                    )}
                   </>
                 )}
                 {planet === "EUROPA" && (
                   <>
-                    <h2 className="h2 text-tertiary ml-4">EUROPA</h2>
-                    <p className="body-text text-indigo-200 w-[450px] h-auto">
+                    <h2
+                      className={`text-tertiary lg:ml-4 mobile:text-center ${
+                        showMenu ? "h3" : "h2"
+                      }`}
+                    >
+                      EUROPA
+                    </h2>
+                    <p
+                      className={`${
+                        showMenu ? "text-[15px] leading-[25px]" : "body-text"
+                      } text-indigo-200 lg:w-[450px] mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto`}
+                    >
+                      {" "}
                       The smallest of the four Galilean moons orbiting Jupiter,
                       Europa is a winter lover’s dream. With an icy surface,
                       it’s perfect for a bit of ice skating, curling, hockey, or
                       simple relaxation in your snug wintery cabin.
                     </p>
-                    <div className="w-[445px] h-[1px] bg-[#383B4B] mt-20 mb-10"></div>
-                    <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
-                      <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
-                      <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
-                      <p className="sh1 text-tertiary">628 MIL. KM</p>
-                      <p className="sh1 text-tertiary">3 YEARS</p>
-                    </div>
+                    <div className="lg:w-[445px] mobile:w-[327px] mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
+                    {!showMenu ? (
+                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
+                        <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
+                        <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                        <p className="sh1 text-tertiary">225 MIL. KM</p>
+                        <p className="sh1 text-tertiary">9 MONTHS</p>
+                      </div>
+                    ) : (
+                      <div className="h-[40px] w-fit mx-auto ">
+                        <p className="sh2 text-indigo-200 mb-2">
+                          AVG. DISTANCE
+                        </p>
+                        <p className="sh1 text-tertiary mb-6">225 MIL. KM</p>
+                        <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                        <p className="sh1 text-tertiary">9 MONTHS</p>
+                      </div>
+                    )}
                   </>
                 )}
                 {planet === "TITAN" && (
                   <>
-                    <h2 className="h2 text-tertiary ">TITAN</h2>
-                    <p className="body-text text-indigo-200 w-[450px] h-auto">
+                    <h2
+                      className={`text-tertiary lg:ml-4 mobile:text-center ${
+                        showMenu ? "h3" : "h2"
+                      }`}
+                    >
+                      TITAN
+                    </h2>
+                    <p
+                      className={`${
+                        showMenu ? "text-[15px] leading-[25px]" : "body-text"
+                      } text-indigo-200 lg:w-[450px] mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto`}
+                    >
+                      {" "}
                       The only moon known to have a dense atmosphere other than
                       Earth, Titan is a home away from home (just a few hundred
                       degrees colder!). As a bonus, you get striking views of
                       the Rings of Saturn.{" "}
                     </p>
-                    <div className="w-[445px] h-[1px] bg-[#383B4B] mt-20 mb-10"></div>
-                    <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
-                      <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
-                      <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
-                      <p className="sh1 text-tertiary">1.6 BIL. KM</p>
-                      <p className="sh1 text-tertiary">7 YEARS</p>
-                    </div>
+                    <div className="lg:w-[445px] mobile:w-[327px] mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
+                    {!showMenu ? (
+                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
+                        <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
+                        <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                        <p className="sh1 text-tertiary">225 MIL. KM</p>
+                        <p className="sh1 text-tertiary">9 MONTHS</p>
+                      </div>
+                    ) : (
+                      <div className="h-[40px] w-fit mx-auto ">
+                        <p className="sh2 text-indigo-200 mb-2">
+                          AVG. DISTANCE
+                        </p>
+                        <p className="sh1 text-tertiary mb-6">225 MIL. KM</p>
+                        <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
+                        <p className="sh1 text-tertiary">9 MONTHS</p>
+                      </div>
+                    )}
                   </>
                 )}
               </div>
