@@ -18,10 +18,21 @@ export default {
         "technology-desktop":
           "url('./assets/technology/background-technology-desktop.jpg')",
         "home-mobile": "url('./assets/home/background-home-mobile.jpg')",
+        "destination-mobile":
+          "url('./assets/destination/background-destination-mobile.jpg')",
+        "crew-mobile": "url('./assets/crew/background-crew-mobile.jpg')",
+        "technology-mobile":
+          "url('./assets/technology/background-technology-mobile.jpg')",
       },
       screens: {
         mobile: { max: "767px" },
         lg: "1024px",
+      },
+      keyframes: {
+        "crew-slider": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
       },
     },
   },

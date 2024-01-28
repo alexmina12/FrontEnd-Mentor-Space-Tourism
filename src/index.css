@@ -56,7 +56,8 @@ a:hover {
 
 .planet {
   margin: 10% auto;
-  animation: slide 6s;
+  animation: slide 3s;
+  z-index: 0;
 }
 
 .closed {
@@ -64,21 +65,34 @@ a:hover {
 }
 
 .test {
-  animation: slide-in 3s;
+  animation: slide-in 1.5s;
 }
 
-.slide {
-  animation: slide 6s;
+.crew-appear {
+  animation: appear 3s;
+}
+
+.text-appear {
+  animation: appear 2s;
 }
 
 @keyframes slide {
   0% {
     opacity: 0;
-    transform: translate(-500px, -100px);
+    transform: translate(-500px, -200px);
   }
   100% {
     opacity: 1;
     transform: translate(0);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -88,7 +102,7 @@ a:hover {
   }
 
   100% {
-    transform: translate(0);
+    transform: translate(41.5px);
   }
 }
 
