@@ -14,6 +14,9 @@ import engineer from "./../assets/crew/image-anousheh-ansari.png";
 import launch from "./../assets/technology/image-launch-vehicle-landscape.jpg";
 import capsule from "./../assets/technology/image-space-capsule-landscape.jpg";
 import port from "./../assets/technology/image-spaceport-landscape.jpg";
+import launch_p from "./../assets/technology/image-launch-vehicle-portrait.jpg";
+import capsule_p from "./../assets/technology/image-space-capsule-portrait.jpg";
+import port_p from "./../assets/technology/image-spaceport-portrait.jpg";
 
 function Space() {
   const [option, setOption] = useState("HOME");
@@ -44,7 +47,7 @@ function Space() {
   };
 
   const getBackgroundClass = () => {
-    if (window.innerWidth > 767) {
+    if (window.innerWidth > 1366) {
       switch (option) {
         case "DESTINATION":
           return "bg-destination-desktop transition-bg duration-1000";
@@ -55,7 +58,7 @@ function Space() {
         default:
           return "bg-home-desktop transition-bg duration-1000 ";
       }
-    } else {
+    } else if (window.innerWidth <= 767) {
       switch (option) {
         case "CREW":
           return "bg-crew-mobile transition-bg duration-1000 mobile:bg-cover";
@@ -65,6 +68,17 @@ function Space() {
           return "bg-technology-mobile transition-bg duration-1000 mobile:bg-cover";
         default:
           return "bg-home-mobile transition-bg duration-1000 mobile:bg-cover";
+      }
+    } else if (767 > window.innerWidth <= 1366) {
+      switch (option) {
+        case "CREW":
+          return "bg-crew-tablet transition-bg duration-1000 tablet:bg-center tablet:h-screen";
+        case "DESTINATION":
+          return "bg-destination-tablet transition-bg duration-1000 tablet:bg-center tablet:h-screen";
+        case "TECHNOLOGY":
+          return "bg-technology-tablet transition-bg duration-1000 tablet:bg-center tablet:h-screen";
+        default:
+          return "bg-home-tablet transition-bg duration-1000 tablet:bg-center tablet:h-screen";
       }
     }
   };
@@ -91,16 +105,18 @@ function Space() {
   return (
     <>
       <div
-        className={`lg:bg-cover lg:w-screen lg:h-screen mobile:w-[100vw] mobile:h-[100vh] flex flex-wrap  ${getBackgroundClass()}`}
+        className={`lg:bg-cover lg:w-screen lg:h-screen mobile:w-[100vw] mobile:h-[100vh] flex flex-wrap  ${getBackgroundClass()} overflow-hidden`}
       >
         <div
-          className={`lg:grid mobile:w-screen lg:grid-cols-[200px_auto_auto] mobile:flex mobile:justify-evenly h-[96px] ml-[1%] mr-0 lg:mt-[3.5%] `}
+          className={`lg:grid mobile:w-screen lg:grid-cols-[200px_auto_auto] mobile:flex h-[96px] mr-0 lg:mt-[3.5%] `}
         >
           <img
             src={logo}
-            className="w-[48px] h-[48px] my-auto lg:ml-[60px] "
+            className="w-[48px] h-[48px] my-auto lg:ml-[60px] mobile:ml-[40px]"
           ></img>
-          <div className="w-[40vw] max-w-[573px] h-[1px] mobile:bg-transparent bg-[#979797] opacity-25 my-auto ml-[10%] z-10 "></div>
+          {window.innerWidth > 1366 && (
+            <div className="w-[40vw] max-w-[573px] h-[1px] bg-transparent bg-[#979797] opacity-25 my-auto ml-[10%] z-10 "></div>
+          )}
           <div className="lg:w-[60vw] lg:max-w-full lg:h-[96px] mobile:bg-transparent lg:bg-tertiary lg:bg-opacity-5 lg:backdrop-blur-[81.55px] lg:pr-40 mobile:flex">
             {showMenu && nav ? (
               <img
@@ -178,50 +194,101 @@ function Space() {
                   </nav>
                 </div>
               </>
-            ) : (
-              window.innerWidth > 1024 && (
-                <nav
-                  className={`text-tertiary flex justify-evenly h-full ${
-                    nav === true ? "" : "bg-red-200"
+            ) : window.innerWidth > 1366 ? (
+              <nav
+                className={`text-tertiary flex justify-evenly h-full ${
+                  nav === true ? "" : "bg-red-200"
+                }`}
+              >
+                <a
+                  onClick={() => handleOptionClick("HOME")}
+                  className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
+                    option === "HOME" ? "border-b-4 border-b-tertiary" : ""
                   }`}
                 >
-                  <a
-                    onClick={() => handleOptionClick("HOME")}
-                    className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
-                      option === "HOME" ? "border-b-4 border-b-tertiary" : ""
-                    }`}
-                  >
-                    00 HOME
-                  </a>
-                  <a
-                    onClick={() => handleOptionClick("DESTINATION")}
-                    className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
-                      option === "DESTINATION"
-                        ? "border-b-4 border-b-tertiary "
-                        : ""
-                    }`}
-                  >
-                    <p>01 DESTINATION</p>
-                  </a>
-                  <a
-                    onClick={() => handleOptionClick("CREW")}
-                    className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
-                      option === "CREW" ? "border-b-4 border-b-tertiary" : ""
-                    }`}
-                  >
-                    02 CREW
-                  </a>
-                  <a
-                    onClick={() => handleOptionClick("TECHNOLOGY")}
-                    className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
-                      option === "TECHNOLOGY"
-                        ? "border-b-4 border-b-tertiary "
-                        : ""
-                    }`}
-                  >
-                    03 TECHNOLOGY
-                  </a>
-                </nav>
+                  00 HOME
+                </a>
+                <a
+                  onClick={() => handleOptionClick("DESTINATION")}
+                  className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
+                    option === "DESTINATION"
+                      ? "border-b-4 border-b-tertiary "
+                      : ""
+                  }`}
+                >
+                  <p>01 DESTINATION</p>
+                </a>
+                <a
+                  onClick={() => handleOptionClick("CREW")}
+                  className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
+                    option === "CREW" ? "border-b-4 border-b-tertiary" : ""
+                  }`}
+                >
+                  02 CREW
+                </a>
+                <a
+                  onClick={() => handleOptionClick("TECHNOLOGY")}
+                  className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center ${
+                    option === "TECHNOLOGY"
+                      ? "border-b-4 border-b-tertiary "
+                      : ""
+                  }`}
+                >
+                  03 TECHNOLOGY
+                </a>
+              </nav>
+            ) : (
+              767 > window.innerWidth < 1366 && (
+                <>
+                  <div className="w-[60vw] h-[96px] bg-tertiary bg-opacity-5 backdrop-blur-[81.55px] absolute right-0 top-0">
+                    <nav
+                      className={`text-tertiary flex justify-evenly h-full ${
+                        nav === true ? "" : "bg-red-200"
+                      }`}
+                    >
+                      <a
+                        onClick={() => handleOptionClick("HOME")}
+                        className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center sh2${
+                          option === "HOME"
+                            ? "border-b-4 border-b-tertiary"
+                            : ""
+                        }`}
+                      >
+                        HOME
+                      </a>
+                      <a
+                        onClick={() => handleOptionClick("DESTINATION")}
+                        className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center sh2${
+                          option === "DESTINATION"
+                            ? "border-b-4 border-b-tertiary "
+                            : ""
+                        }`}
+                      >
+                        DESTINATION
+                      </a>
+                      <a
+                        onClick={() => handleOptionClick("CREW")}
+                        className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center sh2${
+                          option === "CREW"
+                            ? "border-b-4 border-b-tertiary"
+                            : ""
+                        }`}
+                      >
+                        CREW
+                      </a>
+                      <a
+                        onClick={() => handleOptionClick("TECHNOLOGY")}
+                        className={`h-full hover:border-b-4 hover:border-b-half_white flex items-center sh2${
+                          option === "TECHNOLOGY"
+                            ? "border-b-4 border-b-tertiary "
+                            : ""
+                        }`}
+                      >
+                        TECHNOLOGY
+                      </a>
+                    </nav>
+                  </div>
+                </>
               )
             )}
           </div>
@@ -489,8 +556,12 @@ function Space() {
         )}
         {option === "CREW" && (
           <>
-            <div className="mobile:flex mobile:flex-wrap w-full mt-[-60%]">
-              <p className="nav text-tertiary mx-auto mt-10">
+            <div className="mobile:flex mobile:flex-wrap w-full mobile:mt-[-60%]">
+              <p
+                className={`${
+                  window.innerWidth > 1366 ? "h5" : "nav"
+                } text-tertiary mx-auto mt-10 mobile:text-center lg:absolute lg:left-64 lg:bottom-20 top-[20%]`}
+              >
                 <span className="font-bold text-half_white">02</span> MEET YOUR
                 CREW
               </p>
@@ -499,55 +570,87 @@ function Space() {
                   {crew === "commander" && (
                     <img
                       src={commander}
-                      className="w-[177px] h-[222px] mx-auto crew-appear"
+                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0"
                     />
                   )}
                   {crew === "specialist" && (
                     <img
                       src={specialist}
-                      className="w-[155px] h-[222px] mx-auto crew-appear"
+                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0"
                     />
                   )}
                   {crew === "pilot" && (
                     <img
                       src={pilot}
-                      className="w-[181px] h-[222px] mx-auto crew-appear"
+                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0"
                     />
                   )}
                   {crew === "engineer" && (
                     <img
                       src={engineer}
-                      className="w-[227px] h-[222px] mx-auto crew-appear"
+                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0"
                     />
                   )}
                 </div>
-                <div className="h-[1px] w-[327px] bg-[#383B4B] mx-auto"></div>
-                <nav className="flex flex-wrap gap-6 justify-center my-8">
+                {window.innerWidth < 1366 && (
+                  <div className="h-[1px] w-[327px] bg-[#383B4B] mx-auto"></div>
+                )}
+                <nav className="flex flex-wrap gap-6 justify-center mobile:my-8 lg:absolute lg:left-64 lg:bottom-20 lg:z-10">
                   <div
-                    className="w-[10px] h-[10px] bg-tertiary rounded-full"
+                    className={`w-[10px] h-[10px] bg-tertiary rounded-full  ${
+                      crew === "commander"
+                        ? "opacity-100"
+                        : "opacity-[17%] hover:opacity-50"
+                    }`}
                     onClick={() => handleCrew("commander")}
                   ></div>
                   <div
-                    className="w-[10px] h-[10px] bg-tertiary rounded-full"
+                    className={`w-[10px] h-[10px] bg-tertiary rounded-full ${
+                      crew === "specialist"
+                        ? "opacity-100"
+                        : "opacity-[17%] hover:opacity-50"
+                    }`}
                     onClick={() => handleCrew("specialist")}
                   ></div>
                   <div
-                    className="w-[10px] h-[10px] bg-tertiary rounded-full"
+                    className={`w-[10px] h-[10px] bg-tertiary rounded-full ${
+                      crew === "pilot"
+                        ? "opacity-100"
+                        : "opacity-[17%] hover:opacity-50"
+                    }`}
                     onClick={() => handleCrew("pilot")}
                   ></div>
                   <div
-                    className="w-[10px] h-[10px] bg-tertiary rounded-full"
+                    className={`w-[10px] h-[10px] bg-tertiary rounded-full ${
+                      engineer === "commander"
+                        ? "opacity-100"
+                        : "opacity-[17%] hover:opacity-50"
+                    }`}
                     onClick={() => handleCrew("engineer")}
                   ></div>
                 </nav>
                 {crew === "commander" && (
                   <>
-                    <div className="text-center w-[100vw] text-appear">
-                      <p className="test-[16px] text-half_white">COMMANDER</p>
-                      <p className="test-[24px] text-tertiary">
+                    <div className="mobile:text-center mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "h4" : "text-[16px]"
+                        } text-half_white`}
+                      >
+                        COMMANDER
+                      </p>
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "h3" : "text-[24px]"
+                        } text-tertiary mb-6 mobile:mt-1`}
+                      >
                         DOUGLAS HURLEY
                       </p>
-                      <p className="text-[15px] leading-[25px] text-secondary flex mx-auto w-[335px] h-[150px]">
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "body-text" : "test-[15px]"
+                        } leading-[25px] text-secondary flex mobile:mx-auto mobile:w-[335px] lg:w-[444px] h-[150px]`}
+                      >
                         Douglas Gerald Hurley is an American engineer, former
                         Marine Corps pilot and former NASA astronaut. He
                         launched into space for the third time as commander of
@@ -558,14 +661,27 @@ function Space() {
                 )}
                 {crew === "specialist" && (
                   <>
-                    <div className="text-center w-[100vw] text-appear">
-                      <p className="test-[16px] text-half_white">
+                    <div className="mobile:text-center mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "h4" : "text-[16px]"
+                        } text-half_white`}
+                      >
                         Mission Specialist{" "}
                       </p>
-                      <p className="test-[24px] text-tertiary">
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "h3" : "text-[24px]"
+                        } text-tertiary mb-6 mobile:mt-1`}
+                      >
                         MARK SHUTTLEWORTH
                       </p>
-                      <p className="text-[15px] leading-[25px] text-secondary flex mx-auto w-[335px] h-[150px]">
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "body-text" : "test-[15px]"
+                        } leading-[25px] text-secondary flex mobile:mx-auto mobile:w-[335px] lg:w-[444px] h-[150px]`}
+                      >
+                        {" "}
                         Mark Richard Shuttleworth is the founder and CEO of
                         Canonical, the company behind the Linux-based Ubuntu
                         operating system. Shuttleworth became the first South
@@ -576,10 +692,27 @@ function Space() {
                 )}
                 {crew === "pilot" && (
                   <>
-                    <div className="text-center w-[100vw] text-appear">
-                      <p className="test-[16px] text-half_white">PILOT</p>
-                      <p className="test-[24px] text-tertiary">Victor Glover</p>
-                      <p className="text-[15px] leading-[25px] text-secondary flex mx-auto w-[335px] h-[150px]">
+                    <div className="mobile:text-center mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "h4" : "text-[16px]"
+                        } text-half_white`}
+                      >
+                        PILOT
+                      </p>
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "h3" : "text-[24px]"
+                        } text-tertiary mb-6 mobile:mt-1`}
+                      >
+                        Victor Glover
+                      </p>
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "body-text" : "test-[15px]"
+                        } leading-[25px] text-secondary flex mobile:mx-auto mobile:w-[335px] lg:w-[444px] h-[150px]`}
+                      >
+                        {" "}
                         Pilot on the first operational flight of the SpaceX Crew
                         Dragon to the International Space Station. Glover is a
                         commander in the U.S. Navy where he pilots an F/A-18.He
@@ -591,14 +724,29 @@ function Space() {
                 )}
                 {crew === "engineer" && (
                   <>
-                    <div className="text-center w-[100vw] text-appear">
-                      <p className="test-[16px] text-half_white">
+                    <div className="mobile:text-center mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "h4" : "text-[16px]"
+                        } text-half_white`}
+                      >
+                        {" "}
                         Flight Engineer
                       </p>
-                      <p className="test-[24px] text-tertiary">
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "h3" : "text-[24px]"
+                        } text-tertiary mb-6 mobile:mt-1`}
+                      >
+                        {" "}
                         Anousheh Ansari
                       </p>
-                      <p className="text-[15px] leading-[25px] text-secondary flex mx-auto w-[335px] h-[150px]">
+                      <p
+                        className={`${
+                          window.innerWidth > 1366 ? "body-text" : "test-[15px]"
+                        } leading-[25px] text-secondary flex mobile:mx-auto mobile:w-[335px] lg:w-[444px] h-[150px]`}
+                      >
+                        {" "}
                         Anousheh Ansari is an Iranian American engineer and
                         co-founder of Prodea Systems. Ansari was the fourth
                         self-funded space tourist, the first self-funded woman
@@ -614,39 +762,93 @@ function Space() {
         {option === "TECHNOLOGY" && (
           <>
             <div className="mobile:flex mobile:flex-wrap w-full mt-[-20%]">
-              <p className="nav text-tertiary mx-auto mt-10">
+              <p
+                className={`${
+                  window.innerWidth > 1366 ? "h5" : "nav"
+                } text-tertiary mx-auto mobile:mt-10 lg:absolute lg:left-[14%] lg:top-[30%]`}
+              >
                 <span className="font-bold text-half_white">03</span> SPACE
                 LAUNCH 101
               </p>
-              {tech === "launch" && <img src={launch} className="" />}
-              {tech === "capsule" && <img src={capsule} className="" />}
-              {tech === "port" && <img src={port} className="" />}
+              {window.innerWidth <= 767 ? (
+                <>
+                  {tech === "launch" && <img src={launch} />}
+                  {tech === "capsule" && <img src={capsule} />}
+                  {tech === "port" && <img src={port} />}
+                </>
+              ) : (
+                <>
+                  {" "}
+                  {tech === "launch" && (
+                    <img
+                      src={launch_p}
+                      className="lg:absolute lg:right-0 lg:bottom-20 lg:w-[535px] lg:h-[527px] "
+                    />
+                  )}
+                  {tech === "capsule" && (
+                    <img
+                      src={capsule_p}
+                      className="lg:absolute lg:right-0 lg:bottom-20 lg:w-[535px] lg:h-[527px] "
+                    />
+                  )}
+                  {tech === "port" && (
+                    <img
+                      src={port_p}
+                      className="lg:absolute lg:right-0 lg:bottom-20 lg:w-[535px] lg:h-[527px] "
+                    />
+                  )}
+                </>
+              )}
             </div>
-            <nav className="text-[32px] tracking-[2px] flex justify-evenly mx-auto h-fit my-12 w-[100vw]">
+            <nav className="text-[32px] tracking-[2px] flex lg:flex-col lg:gap-10 mobile:justify-evenly mobile:mx-auto lg:mt-[7%] lg:ml-[230px] h-fit my-12 w-[100vw]">
               <button
-                className="bg-tertiary border-half_white border-[1px] w-[80px] h-[80px] rounded-full "
+                className={`border-half_white border-[1px] w-[80px] h-[80px] rounded-full ${
+                  tech === "launch"
+                    ? "bg-tertiary text-primary"
+                    : "bg-transparent hover:border-tertiary text-tertiary"
+                }`}
                 onClick={() => handleTech("launch")}
               >
                 1
               </button>
               <button
-                className="bg-tertiary border-half_white border-[1px] w-[80px] h-[80px] rounded-full"
+                className={`border-half_white border-[1px] w-[80px] h-[80px] rounded-full ${
+                  tech === "capsule"
+                    ? "bg-tertiary text-primary"
+                    : "bg-transparent hover:border-tertiary text-tertiary"
+                }`}
                 onClick={() => handleTech("capsule")}
               >
                 2
               </button>
               <button
-                className="bg-tertiary border-half_white border-[1px] w-[80px] h-[80px] rounded-full"
+                className={`border-half_white border-[1px] w-[80px] h-[80px] rounded-full ${
+                  tech === "port"
+                    ? "bg-tertiary text-primary"
+                    : "bg-transparent hover:border-tertiary text-tertiary"
+                }`}
                 onClick={() => handleTech("port")}
               >
                 3
               </button>
             </nav>
             {tech === "launch" && (
-              <div className="mx-auto text-center mt-[-20%]">
-                <p className="test-[16px] text-half_white">THE TERMINOLOGY</p>
-                <p className="test-[16px] text-half_white">LAUNCH VEHICLE</p>
-                <p className="text-[15px] leading-[25px] text-secondary flex mx-auto w-[335px] h-[150px]">
+              <div className="mobile:mx-auto mobile:text-center mobile:mt-[-20%] lg:mt-[-440px] lg:ml-[400px]">
+                <p className="text-[16px] text-half_white">
+                  THE TERMINOLOGY...
+                </p>
+                <p
+                  className={`${
+                    window.innerWidth > 1366 ? "h3" : "text-[24px]"
+                  } text-tertiary mb-6 mt-2`}
+                >
+                  LAUNCH VEHICLE
+                </p>
+                <p
+                  className={`${
+                    window.innerWidth > 1366 ? "body-text" : "text-[15px]"
+                  } leading-[25px] text-secondary flex mobile:mx-auto lg:w-[460px] mobile:w-[335px] h-[150px]`}
+                >
                   A launch vehicle or carrier rocket is a rocket-propelled
                   vehicle used to carry a payload from Earth's surface to space,
                   usually to Earth orbit or beyond. Our WEB-X carrier rocket is
@@ -656,10 +858,23 @@ function Space() {
               </div>
             )}
             {tech === "capsule" && (
-              <div className="mx-auto text-center mt-[-20%]">
-                <p className="test-[16px] text-half_white">THE TERMINOLOGY</p>
-                <p className="test-[16px] text-half_white">SPACEPORT</p>
-                <p className="text-[15px] leading-[25px] text-secondary flex mx-auto w-[335px] h-[150px]">
+              <div className="mobile:mx-auto mobile:text-center mobile:mt-[-20%] lg:mt-[-440px] lg:ml-[400px]">
+                <p className="text-[16px] text-half_white">
+                  THE TERMINOLOGY...
+                </p>
+                <p
+                  className={`${
+                    window.innerWidth > 1366 ? "h3" : "text-[24px]"
+                  } text-tertiary mb-6 mt-2`}
+                >
+                  SPACEPORT
+                </p>
+                <p
+                  className={`${
+                    window.innerWidth > 1366 ? "body-text" : "text-[15px]"
+                  } leading-[25px] text-secondary flex mx-auto lg:w-[460px] mobile:w-[335px] h-[150px]`}
+                >
+                  {" "}
                   A spaceport or cosmodrome is a site for launching (or
                   receiving) spacecraft, by analogy to the seaport for ships or
                   airport for aircraft. Based in the famous Cape Canaveral, our
@@ -669,10 +884,24 @@ function Space() {
               </div>
             )}
             {tech === "port" && (
-              <div className="mx-auto text-center mt-[-20%]">
-                <p className="test-[16px] text-half_white">THE TERMINOLOGY</p>
-                <p className="test-[16px] text-half_white">SPACE CAPSULE</p>
-                <p className="text-[15px] leading-[25px] text-secondary flex mx-auto w-[335px] h-[150px]">
+              <div className="mobile:mx-auto mobile:text-center mobile:mt-[-20%] lg:mt-[-440px] lg:ml-[400px]">
+                <p className="text-[16px] text-half_white">
+                  THE TERMINOLOGY...
+                </p>
+                <p
+                  className={`${
+                    window.innerWidth > 1366 ? "h3" : "text-[24px]"
+                  } text-tertiary mb-6 mt-2`}
+                >
+                  {" "}
+                  SPACE CAPSULE
+                </p>
+                <p
+                  className={`${
+                    window.innerWidth > 1366 ? "body-text" : "text-[15px]"
+                  } leading-[25px] text-secondary flex mx-auto lg:w-[460px] mobile:w-[335px] h-[150px]`}
+                >
+                  {" "}
                   A space capsule is an often-crewed spacecraft that uses a
                   blunt-body reentry capsule to reenter the Earth's atmosphere
                   without wings. Our capsule is where you'll spend your time

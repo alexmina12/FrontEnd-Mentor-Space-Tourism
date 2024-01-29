@@ -23,9 +23,16 @@ export default {
         "crew-mobile": "url('./assets/crew/background-crew-mobile.jpg')",
         "technology-mobile":
           "url('./assets/technology/background-technology-mobile.jpg')",
+        "home-tablet": "url('./assets/home/background-home-tablet.jpg')",
+        "destination-tablet":
+          "url('./assets/destination/background-destination-tablet.jpg')",
+        "crew-tablet": "url('./assets/crew/background-crew-tablet.jpg')",
+        "technology-tablet":
+          "url('./assets/technology/background-technology-tablet.jpg')",
       },
       screens: {
         mobile: { max: "767px" },
+        tablet: { min: "768px", max: "1366px" },
         lg: "1024px",
       },
       keyframes: {
