@@ -33,7 +33,7 @@ export default {
       screens: {
         mobile: { max: "767px" },
         tablet: { min: "768px", max: "1366px" },
-        lg: "1024px",
+        lg: "1367px",
       },
       keyframes: {
         "crew-slider": {

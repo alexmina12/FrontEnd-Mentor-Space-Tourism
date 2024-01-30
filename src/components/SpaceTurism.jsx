@@ -69,16 +69,16 @@ function Space() {
         default:
           return "bg-home-mobile transition-bg duration-1000 mobile:bg-cover";
       }
-    } else if (767 > window.innerWidth <= 1366) {
+    } else if (767 < window.innerWidth && window.innerWidth <= 1366) {
       switch (option) {
         case "CREW":
-          return "bg-crew-tablet transition-bg duration-1000 tablet:bg-center tablet:h-screen";
+          return "bg-crew-tablet transition-bg duration-1000 bg-cover";
         case "DESTINATION":
-          return "bg-destination-tablet transition-bg duration-1000 tablet:bg-center tablet:h-screen";
+          return "bg-destination-tablet transition-bg duration-1000 bg-cover";
         case "TECHNOLOGY":
-          return "bg-technology-tablet transition-bg duration-1000 tablet:bg-center tablet:h-screen";
+          return "bg-technology-tablet transition-bg duration-1000 bg-cover";
         default:
-          return "bg-home-tablet transition-bg duration-1000 tablet:bg-center tablet:h-screen";
+          return "bg-home-tablet transition-bg duration-1000 bg-cover";
       }
     }
   };
@@ -105,14 +105,14 @@ function Space() {
   return (
     <>
       <div
-        className={`lg:bg-cover lg:w-screen lg:h-screen mobile:w-[100vw] mobile:h-[100vh] flex flex-wrap  ${getBackgroundClass()} overflow-hidden`}
+        className={`lg:bg-cover lg:w-screen lg:h-screen mobile:w-[100vw] mobile:h-[100vh] tablet:w-screen tablet:h-screen mobile:flex lg:flex flex-wrap  ${getBackgroundClass()} overflow-hidden`}
       >
         <div
-          className={`lg:grid mobile:w-screen lg:grid-cols-[200px_auto_auto] mobile:flex h-[96px] mr-0 lg:mt-[3.5%] `}
+          className={`lg:grid mobile:w-screen lg:grid-cols-[200px_auto_auto] mobile:flex h-[96px] mr-0 lg:mt-[3.5%] tablet:flex`}
         >
           <img
             src={logo}
-            className="w-[48px] h-[48px] my-auto lg:ml-[60px] mobile:ml-[40px]"
+            className="w-[48px] h-[48px] my-auto lg:ml-[60px] mobile:ml-[40px] tablet:ml-[40px]"
           ></img>
           {window.innerWidth > 1366 && (
             <div className="w-[40vw] max-w-[573px] h-[1px] bg-transparent bg-[#979797] opacity-25 my-auto ml-[10%] z-10 "></div>
@@ -238,7 +238,7 @@ function Space() {
                 </a>
               </nav>
             ) : (
-              767 > window.innerWidth < 1366 && (
+              767 < window.innerWidth < 1366 && (
                 <>
                   <div className="w-[60vw] h-[96px] bg-tertiary bg-opacity-5 backdrop-blur-[81.55px] absolute right-0 top-0">
                     <nav
@@ -295,7 +295,7 @@ function Space() {
         </div>
         {option === "HOME" && (
           <>
-            <div className="lg:grid lg:grid-cols-2 lg:ml-10 mobile:flex mobile:flex-wrap mobile:bg-home-mobile mobile:bg-bottom mobile:bg-cover">
+            <div className="lg:grid lg:grid-cols-2 lg:ml-10 mobile:flex mobile:flex-wrap mobile:bg-home-mobile mobile:bg-bottom mobile:bg-cover tablet:flex tablet:flex-col tablet:text-center tablet:mt-[50%] tablet:translate-y-[-50%]">
               {" "}
               <div className="lg:mt-[25%] lg:ml-[15%] lg:w-[800px] mobile:flex mobile:flex-row mobile:flex-wrap mobile:justify-center mobile:mb-[30%]">
                 <h5 className={`text-secondary ${showMenu ? "nav" : "h5"}`}>
@@ -309,7 +309,7 @@ function Space() {
                 <p
                   className={`${
                     showMenu ? "text-[15px] leading-[25px]" : "body-text"
-                  } text-secondary lg:w-[480px] mobile:text-center mobile:w-[332px]`}
+                  } text-secondary lg:w-[480px] mobile:text-center mobile:w-[332px] tablet:w-[520px] tablet:mx-auto`}
                 >
                   Let’s face it; if you want to go to space, you might as well
                   genuinely go to outer space and not hover kind of on the edge
@@ -318,7 +318,7 @@ function Space() {
                 </p>
               </div>
               <div className="mx-auto lg:mt-[38%] lg:mr-[25%] ">
-                <button className="lg:w-[274px] mobile:text-[20px] mobile:mx-auto lg:h-[274px] mobile:w-[150px] mobile:h-[150px] text-center font-[Bellefair] text-[32px] tracking-[2px] bg-tertiary rounded-full transition-all duration-[1500ms] hover:ring-[75px] hover:ring-opacity-50 hover:ring-shadow_white">
+                <button className="lg:w-[274px] mobile:text-[20px] mobile:mx-auto tablet:w-[242px] tablet:h-[242px] lg:h-[274px] mobile:w-[150px] mobile:h-[150px] text-center font-[Bellefair] text-[32px] tracking-[2px] bg-tertiary rounded-full transition-all duration-[1500ms] hover:ring-[75px] hover:ring-opacity-50 hover:ring-shadow_white">
                   <p className="m-auto ">EXPLORE</p>
                 </button>
               </div>
@@ -330,12 +330,12 @@ function Space() {
             <div className="grid lg:grid-cols-2 w-[100vw]">
               <div className="flex flex-col lg:mt-[-100px] mobile:mt-[-260px] lg:ml-[10%] mobile:mx-auto">
                 <p
-                  className={`sh1 lg:ml-[20%] text-secondary mobile:w-[300px] ${
+                  className={`tablet:text-[20px] lg:ml-[20%] tablet:ml-6 text-secondary mobile:w-[300px] ${
                     showMenu ? "nav" : "sh1"
                   }`}
                 >
                   <span
-                    className={`planet ${
+                    className={`planet  ${
                       showMenu ? "w-[170px] h-[170px]" : "w-[445px] h-[445px]"
                     }`}
                   >
@@ -346,7 +346,8 @@ function Space() {
                 {planet === "MOON" && (
                   <img
                     src={moon}
-                    className={`planet ${
+                    className={`planet tablet:w-[300px] tablet:h-[300px]
+                    ${
                       showMenu ? "w-[170px] h-[170px]" : "w-[445px] h-[445px]"
                     }`}
                     alt="Moon"
@@ -355,7 +356,7 @@ function Space() {
                 {planet === "MARS" && (
                   <img
                     src={mars}
-                    className={`planet  ${
+                    className={`planet tablet:w-[300px] tablet:h-[300px]  ${
                       showMenu ? "w-[170px] h-[170px]" : "w-[445px] h-[445px]"
                     }`}
                     alt="Mars"
@@ -365,7 +366,7 @@ function Space() {
                 {planet === "EUROPA" && (
                   <img
                     src={europa}
-                    className={`planet ${
+                    className={`planet tablet:w-[300px] tablet:h-[300px] ${
                       showMenu ? "w-[170px] h-[170px]" : "w-[445px] h-[445px]"
                     }`}
                     alt="Mars"
@@ -374,7 +375,7 @@ function Space() {
                 {planet === "TITAN" && (
                   <img
                     src={titan}
-                    className={`planet ${
+                    className={`planet tablet:w-[300px] tablet:h-[300px] ${
                       showMenu ? "w-[170px] h-[170px]" : "w-[445px] h-[445px]"
                     }`}
                     alt="Mars"
@@ -383,7 +384,7 @@ function Space() {
               </div>
               <div className="lg:ml-[15%]">
                 <nav
-                  className={`flex lg:justify-between mobile:justify-evenly lg:w-[20vw] text-tertiary mobile:mt-[-150px] ${
+                  className={`flex lg:justify-between tablet:w-[80vw] tablet:mx-auto tablet:flex tablet:justify-evenly mobile:justify-evenly lg:w-[20vw] text-tertiary mobile:mt-[-150px] ${
                     showMenu ? "sh2" : "nav"
                   }`}
                 >
@@ -395,7 +396,7 @@ function Space() {
                 {planet === "MOON" && (
                   <>
                     <h2
-                      className={`text-tertiary lg:ml-4 mobile:text-center ${
+                      className={`text-tertiary lg:ml-4 mobile:text-center tablet:justify-center tablet:flex tablet:text-[80px] ${
                         showMenu ? "h3" : "h2"
                       }`}
                     >
@@ -404,16 +405,16 @@ function Space() {
                     <p
                       className={`${
                         showMenu ? "text-[15px] leading-[25px]" : "body-text"
-                      } text-indigo-200 lg:w-[450px] mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto `}
+                      } text-indigo-200 lg:w-[450px] tablet:w-[650px] tablet:mx-auto tablet:text-center mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto `}
                     >
                       See our planet as you’ve never seen it before. A perfect
                       relaxing trip away to help regain perspective and come
                       back refreshed. While you’re there, take in some history
                       by visiting the Luna 2 and Apollo 11 landing sites.
                     </p>
-                    <div className="lg:w-[445px] mobile:w-[327px] mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
+                    <div className="lg:w-[445px] mobile:w-[327px] tablet:w-[573px] tablet:mx-auto tablet:my-10 mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
                     {!showMenu ? (
-                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
+                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16 tablet:mx-auto">
                         <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
                         <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
                         <p className="sh1 text-tertiary">225 MIL. KM</p>
@@ -434,7 +435,7 @@ function Space() {
                 {planet === "MARS" && (
                   <>
                     <h2
-                      className={`text-tertiary lg:ml-4 mobile:text-center ${
+                      className={`text-tertiary lg:ml-4 mobile:text-center tablet:justify-center tablet:flex tablet:text-[80px] ${
                         showMenu ? "h3" : "h2"
                       }`}
                     >
@@ -443,16 +444,16 @@ function Space() {
                     <p
                       className={`${
                         showMenu ? "text-[15px] leading-[25px]" : "body-text"
-                      } text-indigo-200 lg:w-[450px] mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto mobile:h-[125px]`}
+                      } text-indigo-200 lg:w-[450px] tablet:w-[650px] tablet:mx-auto tablet:text-center mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto `}
                     >
                       Don’t forget to pack your hiking boots. You’ll need them
                       to tackle Olympus Mons, the tallest planetary mountain in
                       our solar system. It’s two and a half times the size of
                       Everest!
                     </p>
-                    <div className="lg:w-[445px] mobile:w-[327px] mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
+                    <div className="lg:w-[445px] mobile:w-[327px] tablet:w-[573px] tablet:mx-auto tablet:my-10 mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
                     {!showMenu ? (
-                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
+                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16 tablet:mx-auto">
                         <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
                         <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
                         <p className="sh1 text-tertiary">225 MIL. KM</p>
@@ -473,7 +474,7 @@ function Space() {
                 {planet === "EUROPA" && (
                   <>
                     <h2
-                      className={`text-tertiary lg:ml-4 mobile:text-center ${
+                      className={`text-tertiary lg:ml-4 mobile:text-center tablet:justify-center tablet:flex tablet:text-[80px] ${
                         showMenu ? "h3" : "h2"
                       }`}
                     >
@@ -482,7 +483,7 @@ function Space() {
                     <p
                       className={`${
                         showMenu ? "text-[15px] leading-[25px]" : "body-text"
-                      } text-indigo-200 lg:w-[450px] mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto`}
+                      } text-indigo-200 lg:w-[450px] tablet:w-[650px] tablet:mx-auto tablet:text-center mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto `}
                     >
                       {" "}
                       The smallest of the four Galilean moons orbiting Jupiter,
@@ -490,9 +491,9 @@ function Space() {
                       it’s perfect for a bit of ice skating, curling, hockey, or
                       simple relaxation in your snug wintery cabin.
                     </p>
-                    <div className="lg:w-[445px] mobile:w-[327px] mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
+                    <div className="lg:w-[445px] mobile:w-[327px] tablet:w-[573px] tablet:mx-auto tablet:my-10 mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
                     {!showMenu ? (
-                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
+                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16 tablet:mx-auto">
                         <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
                         <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
                         <p className="sh1 text-tertiary">225 MIL. KM</p>
@@ -513,7 +514,7 @@ function Space() {
                 {planet === "TITAN" && (
                   <>
                     <h2
-                      className={`text-tertiary lg:ml-4 mobile:text-center ${
+                      className={`text-tertiary lg:ml-4 mobile:text-center tablet:justify-center tablet:flex tablet:text-[80px] ${
                         showMenu ? "h3" : "h2"
                       }`}
                     >
@@ -522,7 +523,7 @@ function Space() {
                     <p
                       className={`${
                         showMenu ? "text-[15px] leading-[25px]" : "body-text"
-                      } text-indigo-200 lg:w-[450px] mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto`}
+                      } text-indigo-200 lg:w-[450px] tablet:w-[650px] tablet:mx-auto tablet:text-center mobile:w-[330px] mobile:text-center mobile:mx-auto h-auto `}
                     >
                       {" "}
                       The only moon known to have a dense atmosphere other than
@@ -530,9 +531,9 @@ function Space() {
                       degrees colder!). As a bonus, you get striking
                       vbg-home-moh-siews of the Rings of Saturn.{" "}
                     </p>
-                    <div className="lg:w-[445px] mobile:w-[327px] mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
+                    <div className="lg:w-[445px] mobile:w-[327px] tablet:w-[573px] tablet:mx-auto tablet:my-10 mobile:mx-auto h-[1px] bg-[#383B4B] lg:mt-20 lg:mb-10 mobile:my-10"></div>
                     {!showMenu ? (
-                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16">
+                      <div className="grid grid-cols-2 grid-rows-2 h-[40px] w-fit gap-x-16 tablet:mx-auto">
                         <p className="sh2 text-indigo-200">AVG. DISTANCE</p>
                         <p className="sh2 text-indigo-200">EST. TRAVEL TIME</p>
                         <p className="sh1 text-tertiary">225 MIL. KM</p>
@@ -560,7 +561,7 @@ function Space() {
               <p
                 className={`${
                   window.innerWidth > 1366 ? "h5" : "nav"
-                } text-tertiary mx-auto mt-10 mobile:text-center lg:absolute lg:left-64 lg:bottom-20 top-[20%]`}
+                } text-tertiary mx-auto mt-10 mobile:text-center lg:absolute lg:left-64 lg:bottom-20 tablet:ml-10 top-[20%]`}
               >
                 <span className="font-bold text-half_white">02</span> MEET YOUR
                 CREW
@@ -570,32 +571,32 @@ function Space() {
                   {crew === "commander" && (
                     <img
                       src={commander}
-                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0"
+                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0 tablet:absolute tablet:bottom-0 tablet:left-[50%] tablet:translate-x-[-40%] tablet:w-[457px] tablet:h-[572px]"
                     />
                   )}
                   {crew === "specialist" && (
                     <img
                       src={specialist}
-                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0"
+                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0 tablet:absolute tablet:bottom-0 tablet:left-[50%] tablet:translate-x-[-40%] tablet:w-[457px] tablet:h-[572px]"
                     />
                   )}
                   {crew === "pilot" && (
                     <img
                       src={pilot}
-                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0"
+                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0 tablet:absolute tablet:bottom-0 tablet:left-[50%] tablet:translate-x-[-40%] tablet:w-[457px] tablet:h-[572px]"
                     />
                   )}
                   {crew === "engineer" && (
                     <img
                       src={engineer}
-                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0"
+                      className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0 tablet:absolute tablet:bottom-0 tablet:left-[50%] tablet:translate-x-[-40%] tablet:w-[457px] tablet:h-[572px]"
                     />
                   )}
                 </div>
-                {window.innerWidth < 1366 && (
+                {767 > window.innerWidth > 1366 && (
                   <div className="h-[1px] w-[327px] bg-[#383B4B] mx-auto"></div>
                 )}
-                <nav className="flex flex-wrap gap-6 justify-center mobile:my-8 lg:absolute lg:left-64 lg:bottom-20 lg:z-10">
+                <nav className="flex tablet:my-auto tablet:absolute tablet:left-[50%] tablet:top-[40%] tablet:translate-x-[-50%] tablet:translate-y-[-50%] flex-wrap gap-6 justify-center mobile:my-8 lg:absolute lg:left-64 lg:bottom-20 lg:z-10">
                   <div
                     className={`w-[10px] h-[10px] bg-tertiary rounded-full  ${
                       crew === "commander"
@@ -631,7 +632,7 @@ function Space() {
                 </nav>
                 {crew === "commander" && (
                   <>
-                    <div className="mobile:text-center mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
+                    <div className="mobile:text-center tablet:flex tablet:flex-col tablet:w-[458px] tablet:h-[232px] tablet:text-center tablet:mx-auto mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
                       <p
                         className={`${
                           window.innerWidth > 1366 ? "h4" : "text-[16px]"
@@ -649,7 +650,7 @@ function Space() {
                       <p
                         className={`${
                           window.innerWidth > 1366 ? "body-text" : "test-[15px]"
-                        } leading-[25px] text-secondary flex mobile:mx-auto mobile:w-[335px] lg:w-[444px] h-[150px]`}
+                        } leading-[25px] text-secondary flex mobile:mx-auto mobile:w-[335px] lg:w-[444px] h-[150px`}
                       >
                         Douglas Gerald Hurley is an American engineer, former
                         Marine Corps pilot and former NASA astronaut. He
@@ -661,7 +662,7 @@ function Space() {
                 )}
                 {crew === "specialist" && (
                   <>
-                    <div className="mobile:text-center mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
+                    <div className="mobile:text-center tablet:flex tablet:flex-col tablet:w-[458px] tablet:h-[232px] tablet:text-center tablet:mx-auto mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
                       <p
                         className={`${
                           window.innerWidth > 1366 ? "h4" : "text-[16px]"
@@ -692,7 +693,7 @@ function Space() {
                 )}
                 {crew === "pilot" && (
                   <>
-                    <div className="mobile:text-center mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
+                    <div className="mobile:text-center tablet:flex tablet:flex-col tablet:w-[458px] tablet:h-[232px] tablet:text-center tablet:mx-auto mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
                       <p
                         className={`${
                           window.innerWidth > 1366 ? "h4" : "text-[16px]"
@@ -724,7 +725,7 @@ function Space() {
                 )}
                 {crew === "engineer" && (
                   <>
-                    <div className="mobile:text-center mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
+                    <div className="mobile:text-center tablet:flex tablet:flex-col tablet:w-[458px] tablet:h-[232px] tablet:text-center tablet:mx-auto mobile:w-[100vw] text-appear lg:absolute lg:left-64 lg:bottom-20 top-[50%]">
                       <p
                         className={`${
                           window.innerWidth > 1366 ? "h4" : "text-[16px]"
@@ -761,7 +762,7 @@ function Space() {
         )}
         {option === "TECHNOLOGY" && (
           <>
-            <div className="mobile:flex mobile:flex-wrap w-full mt-[-20%]">
+            <div className="mobile:flex mobile:flex-wrap w-screen mobile:mt-[-20%] lg:mt-[-20%]">
               <p
                 className={`${
                   window.innerWidth > 1366 ? "h5" : "nav"
@@ -770,11 +771,17 @@ function Space() {
                 <span className="font-bold text-half_white">03</span> SPACE
                 LAUNCH 101
               </p>
-              {window.innerWidth <= 767 ? (
+              {window.innerWidth <= 1366 ? (
                 <>
-                  {tech === "launch" && <img src={launch} />}
-                  {tech === "capsule" && <img src={capsule} />}
-                  {tech === "port" && <img src={port} />}
+                  {tech === "launch" && (
+                    <img src={launch} className="tablet:w-[100vw]" />
+                  )}
+                  {tech === "capsule" && (
+                    <img src={capsule} className="tablet:w-[100vw]" />
+                  )}
+                  {tech === "port" && (
+                    <img src={port} className="tablet:w-[100vw]" />
+                  )}
                 </>
               ) : (
                 <>
@@ -800,7 +807,7 @@ function Space() {
                 </>
               )}
             </div>
-            <nav className="text-[32px] tracking-[2px] flex lg:flex-col lg:gap-10 mobile:justify-evenly mobile:mx-auto lg:mt-[7%] lg:ml-[230px] h-fit my-12 w-[100vw]">
+            <nav className="text-[32px] tracking-[2px] flex tablet:justify-center tablet:gap-4 lg:flex-col lg:gap-10 mobile:justify-evenly mobile:mx-auto lg:mt-[7%] lg:ml-[230px] h-fit my-12 w-[100vw]">
               <button
                 className={`border-half_white border-[1px] w-[80px] h-[80px] rounded-full ${
                   tech === "launch"
@@ -833,7 +840,7 @@ function Space() {
               </button>
             </nav>
             {tech === "launch" && (
-              <div className="mobile:mx-auto mobile:text-center mobile:mt-[-20%] lg:mt-[-440px] lg:ml-[400px]">
+              <div className="mobile:mx-auto tablet:text-center mobile:text-center mobile:mt-[-20%] lg:mt-[-440px] lg:ml-[400px]">
                 <p className="text-[16px] text-half_white">
                   THE TERMINOLOGY...
                 </p>
@@ -847,7 +854,7 @@ function Space() {
                 <p
                   className={`${
                     window.innerWidth > 1366 ? "body-text" : "text-[15px]"
-                  } leading-[25px] text-secondary flex mobile:mx-auto lg:w-[460px] mobile:w-[335px] h-[150px]`}
+                  } leading-[25px] text-secondary flex mobile:mx-auto lg:w-[460px] mobile:w-[335px] tablet:w-[430px] tablet:mx-auto h-[150px]`}
                 >
                   A launch vehicle or carrier rocket is a rocket-propelled
                   vehicle used to carry a payload from Earth's surface to space,
@@ -858,7 +865,7 @@ function Space() {
               </div>
             )}
             {tech === "capsule" && (
-              <div className="mobile:mx-auto mobile:text-center mobile:mt-[-20%] lg:mt-[-440px] lg:ml-[400px]">
+              <div className="mobile:mx-auto tablet:text-center mobile:text-center mobile:mt-[-20%] lg:mt-[-440px] lg:ml-[400px]">
                 <p className="text-[16px] text-half_white">
                   THE TERMINOLOGY...
                 </p>
@@ -872,7 +879,7 @@ function Space() {
                 <p
                   className={`${
                     window.innerWidth > 1366 ? "body-text" : "text-[15px]"
-                  } leading-[25px] text-secondary flex mx-auto lg:w-[460px] mobile:w-[335px] h-[150px]`}
+                  } leading-[25px] text-secondary flex mobile:mx-auto lg:w-[460px] mobile:w-[335px] tablet:w-[430px] tablet:mx-auto h-[150px]`}
                 >
                   {" "}
                   A spaceport or cosmodrome is a site for launching (or
@@ -884,7 +891,7 @@ function Space() {
               </div>
             )}
             {tech === "port" && (
-              <div className="mobile:mx-auto mobile:text-center mobile:mt-[-20%] lg:mt-[-440px] lg:ml-[400px]">
+              <div className="mobile:mx-auto tablet:text-center mobile:text-center mobile:mt-[-20%] lg:mt-[-440px] lg:ml-[400px]">
                 <p className="text-[16px] text-half_white">
                   THE TERMINOLOGY...
                 </p>
@@ -899,7 +906,7 @@ function Space() {
                 <p
                   className={`${
                     window.innerWidth > 1366 ? "body-text" : "text-[15px]"
-                  } leading-[25px] text-secondary flex mx-auto lg:w-[460px] mobile:w-[335px] h-[150px]`}
+                  } leading-[25px] text-secondary flex mobile:mx-auto lg:w-[460px] mobile:w-[335px] tablet:w-[430px] tablet:mx-auto h-[150px]`}
                 >
                   {" "}
                   A space capsule is an often-crewed spacecraft that uses a

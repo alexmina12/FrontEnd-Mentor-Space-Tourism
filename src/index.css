@@ -98,11 +98,11 @@ a:hover {
 
 @keyframes slide-in {
   0% {
-    transform: translate(500px, 0);
+    transform: translate(800px, 0);
   }
 
   100% {
-    transform: translate(114px);
+    transform: translate(342px);
   }
 }
 
