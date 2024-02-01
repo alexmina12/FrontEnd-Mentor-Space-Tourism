@@ -113,7 +113,8 @@ function Space() {
           <img
             src={logo}
             className="w-[48px] h-[48px] my-auto lg:ml-[60px] mobile:ml-[40px] tablet:ml-[40px]"
-          ></img>
+            alt="logo"
+          />
           {window.innerWidth > 1366 && (
             <div className="w-[40vw] max-w-[573px] h-[1px] bg-transparent bg-[#979797] opacity-25 my-auto ml-[10%] z-10 "></div>
           )}
@@ -123,6 +124,7 @@ function Space() {
                 src={open}
                 className="h-[24px] my-auto mobile:absolute mobile:top-9 mobile:right-14"
                 onClick={handleNav}
+                alt="open"
               />
             ) : !nav ? (
               <>
@@ -131,6 +133,7 @@ function Space() {
                     src={close}
                     className="h-[24px] my-auto mobile:absolute mobile:top-9 mobile:right-14 mobile:z-10"
                     onClick={handleNav}
+                    alt="close"
                   />
                   <nav
                     className={`text-tertiary flex lg:justify-evenly h-full  ${
@@ -572,24 +575,28 @@ function Space() {
                     <img
                       src={commander}
                       className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0 tablet:absolute tablet:bottom-0 tablet:left-[50%] tablet:translate-x-[-40%] tablet:w-[457px] tablet:h-[572px]"
+                      alt="commander"
                     />
                   )}
                   {crew === "specialist" && (
                     <img
                       src={specialist}
                       className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0 tablet:absolute tablet:bottom-0 tablet:left-[50%] tablet:translate-x-[-40%] tablet:w-[457px] tablet:h-[572px]"
+                      alt="specialist"
                     />
                   )}
                   {crew === "pilot" && (
                     <img
                       src={pilot}
                       className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0 tablet:absolute tablet:bottom-0 tablet:left-[50%] tablet:translate-x-[-40%] tablet:w-[457px] tablet:h-[572px]"
+                      alt="pilot"
                     />
                   )}
                   {crew === "engineer" && (
                     <img
                       src={engineer}
                       className="mobile:w-[177px] mobile:h-[222px] mobile:mx-auto crew-appear lg:absolute lg:right-0 lg:bottom-0 tablet:absolute tablet:bottom-0 tablet:left-[50%] tablet:translate-x-[-40%] tablet:w-[457px] tablet:h-[572px]"
+                      alt="engineer"
                     />
                   )}
                 </div>
@@ -774,13 +781,21 @@ function Space() {
               {window.innerWidth <= 1366 ? (
                 <>
                   {tech === "launch" && (
-                    <img src={launch} className="tablet:w-[100vw]" />
+                    <img
+                      src={launch}
+                      className="tablet:w-[100vw]"
+                      alt="launch"
+                    />
                   )}
                   {tech === "capsule" && (
-                    <img src={capsule} className="tablet:w-[100vw]" />
+                    <img
+                      src={capsule}
+                      className="tablet:w-[100vw]"
+                      alt="capsule"
+                    />
                   )}
                   {tech === "port" && (
-                    <img src={port} className="tablet:w-[100vw]" />
+                    <img src={port} className="tablet:w-[100vw]" alt="port" />
                   )}
                 </>
               ) : (
@@ -789,19 +804,22 @@ function Space() {
                   {tech === "launch" && (
                     <img
                       src={launch_p}
-                      className="lg:absolute lg:right-0 lg:bottom-20 lg:w-[535px] lg:h-[527px] "
+                      className="lg:absolute lg:right-0 lg:bottom-20 lg:w-[535px] lg:h-[527px]"
+                      alt="launch_p"
                     />
                   )}
                   {tech === "capsule" && (
                     <img
                       src={capsule_p}
-                      className="lg:absolute lg:right-0 lg:bottom-20 lg:w-[535px] lg:h-[527px] "
+                      className="lg:absolute lg:right-0 lg:bottom-20 lg:w-[535px] lg:h-[527px]"
+                      alt="capsule_p"
                     />
                   )}
                   {tech === "port" && (
                     <img
                       src={port_p}
-                      className="lg:absolute lg:right-0 lg:bottom-20 lg:w-[535px] lg:h-[527px] "
+                      className="lg:absolute lg:right-0 lg:bottom-20 lg:w-[535px] lg:h-[527px]"
+                      alt="port_p"
                     />
                   )}
                 </>
